@@ -585,8 +585,8 @@ class ezcMailImapTransport
 
         }
         $response = trim( $this->connection->getLine() );
-        // hack for gmail, to fix issue #15837: imap.google.com (google gmail) changed IMAP response
-        if ( $this->serverType === self::SERVER_GIMAP && strpos( $response, "* CAPABILITY" ) === 0 )
+        // hack for gmail and yandex, to fix issue #15837: imap.google.com (google gmail) changed IMAP response
+        if ( strpos( $response, "* CAPABILITY" ) === 0 )
         {
             $response = trim( $this->connection->getLine() );
         }
